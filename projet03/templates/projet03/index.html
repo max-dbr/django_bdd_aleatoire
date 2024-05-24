@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Magasin</title>
+    <!-- Intégration de Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/projet03/bootstrap/css/bootstrap.min.css' %}">
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/projet03/datatables/datatables.min.css' %}" rel="stylesheet">
+    <!-- Votre fichier de styles personnalisés -->
+    <link rel="stylesheet" href="{% static 'css/projet03/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Stock Magasin</h1>
+        <a href="{% url 'generer_lignes_aleatoires' %}" class="btn btn-primary mt-3">Générer des lignes aléatoires</a>
+         <a href="{% url 'supprimer_toutes_lignes' %}" class="btn btn-danger mt-3">Supprimer toutes les lignes</a>
+        <div> </div>
+       <table class="table datatable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Reference</th>
+                    <th>Vetement</th>
+                    <th>Couleur</th>
+                    <th>Taille</th>
+                    <th>Quantite</th>
+                    <th>Prix unitaire</th>
+                    <th>Prix total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.reference }}</td>
+                    <td>{{ product.vetement }}</td>
+                    <td>{{ product.couleur }}</td>
+                    <td>{{ product.taille }}</td>
+                    <td>{{ product.quantite }}</td>
+                    <td>{{ product.prix_unitaire }}</td>
+                    <td>{{ product.prix_total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Intégration de jQuery -->
+    <script src="{% static 'vendor/projet03/jquery/jquery.min.js' %}"> </script>
+    <!-- Intégration de DataTables -->
+    <script src="{% static 'vendor/projet03/datatables/datatables.min.js' %}"> </script>
+    <!-- Intégration de Bootstrap JS (optionnel) -->
+    <script src="{% static 'vendor/projet03/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Script d'initialisation de DataTables -->
+    <script src="{% static 'js/projet03/script.js' %}"> </script>
+</body>
+</html>
